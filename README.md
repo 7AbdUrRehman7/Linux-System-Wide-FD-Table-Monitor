@@ -1,4 +1,4 @@
-# Linux-System-Wide-FD-Table-Monitor
+# Linux System Wide FD Table Monitor
 
 ## 📌 Overview
 This C-based Linux utility explores how the operating system tracks open files. It extracts and displays various views of file descriptor data using the `/proc` virtual filesystem. Users can generate per-process, system-wide, vnode-based, and composite FD tables, save them to text or binary files, and evaluate performance based on output format.
