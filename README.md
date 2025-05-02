@@ -12,8 +12,8 @@ This C-based Linux utility explores how the operating system tracks open files. 
 - Display vnode-based tables using inode numbers
 - Combine all views into a composite table
 - Show summary of FD counts per process
-- Highlight processes exceeding FD threshold
-- Save composite table to:
+- Highlight processes exceeding the FD threshold
+- Save the composite table to:
   - Plain text file
   - Binary file with custom serialization
 - Performance comparison between output formats
@@ -27,14 +27,14 @@ This C-based Linux utility explores how the operating system tracks open files. 
   - `opendir()` and `readdir()` for directory traversal
 - Modular function design for each table and file type
 - Composite view combines PID, FD, filename, and inode data
-- Output can be redirected to screen, text file, or binary file
+- Output can be redirected to the screen, a text file, or a binary file
 
 
 ## 🛠️ Compilation Instructions
 Run on a Linux system using:
 
 ```bash
-gcc -Wall -Wextra -std=c99 -Werror -g -o [FILENAME] [FILENAME].c
+gcc -Wall -Wextra -std=c99 -Werror -g -o FD_tables FD_tables.c
 ```
 
 ## 🚩 Supported Command-Line Arguments
@@ -52,16 +52,16 @@ gcc -Wall -Wextra -std=c99 -Werror -g -o [FILENAME] [FILENAME].c
 
 | Command | Description |
 |--------|-------------|
-| `./A2` | Displays the composite table by default |
-| `./A2 1234 --per-process` | Shows FD table for PID 1234 |
-| `./A2 --systemWide` | Displays system-wide FD table |
-| `./A2 --threshold=2` | Lists processes with >2 FDs |
-| `./A2 --output_TXT` | Saves composite table to `compositeTable.txt` |
-| `./A2 1234 --output_binary` | Saves PID 1234’s composite table to `compositeTable.bin` |
+| `./FD_tables` | Displays the composite table by default |
+| `./FD_tables 1234 --per-process` | Shows FD table for PID 1234 |
+| `./FD_tables --systemWide` | Displays system-wide FD table |
+| `./FD_tables --threshold=2` | Lists processes with >2 FDs |
+| `./FD_tables --output_TXT` | Saves composite table to `compositeTable.txt` |
+| `./FD_tables 1234 --output_binary` | Saves PID 1234’s composite table to `compositeTable.bin` |
 
 ## 🧪 Testing
-Tested various combinations of command-line arguments including:
-- Valid/invalid PIDs
+Tested various combinations of command-line arguments, including:
+- Valid/invalid PIDS
 - All flags together
 - File-saving with invalid file paths
 - Thresholds <= 0 and > 0
@@ -79,7 +79,7 @@ Tested various combinations of command-line arguments including:
 
 ## ⚠️ Disclaimers
 - Table formats follow Prof. Marcelo’s demo specifications
-- Tables for specific PIDs exclude row indices
+- Tables for specific PIDS exclude row indices
 - Composite and threshold tables maintain consistent output order
 - `#define _GNU_SOURCE` is used to access `DT_LNK` and `DT_DIR`
 
